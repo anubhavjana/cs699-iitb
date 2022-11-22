@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <div class="container">
+            <div class="row g-0">
+                <div class="col-sm-6 col-md-8" id="header-text">
+                  <h1 style="color:black" id="header-h1">Hey {{user.username}}, <br> View your Doctors </h1>
+                  <p id="header-paragraph">A trusted destination for users worldwide, <br> Authorised by FCA, ASIC & FSCA</p>
+                </div>
+                <strong><h1>Our Doctors</h1></strong>
+                <br></br>
+                {% for doctor in doctor_list %}
+                <strong>Doctor Name: {{ doctor.name }} </strong>
+                  <ul>
+                    <li> Reach me at -> {{ doctor.email }} </li>
+                    <li> City -> {{ doctor.city }}</li>
+                    <li> Specialization -> {{ doctor.specialization }}</li>
+                    <li> Years of Experience -> {{ doctor.doctor_experience }}</li>
+                    <li> Cost per visit -> {{ doctor.cost_per_visit }}</li>
+                  </ul>
+                  <br/>
+                {% endfor %}
+                <div class="col-6 col-md-4" id="header-image"><img src="images/in-liquid-slide-2.svg " alt=""></div>
+             </div>
+    </div>
+
+{% endblock content %}
+
